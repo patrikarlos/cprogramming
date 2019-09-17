@@ -1,0 +1,20 @@
+g++ -c mydll.cc
+g++ -shared -o mydll.dll mydll.o
+But when I type:
+
+g++ -o myprog myprog.cc -L./ -lmydll
+
+
+
+## .so will not work on Cygwin, dll will
+gcc -c -Wall -Werror -fpic foo.c
+#Build shared lib, name it foo.dll
+gcc -shared -o foo.dll foo.o
+## On Cygwin this links "-lfoo" --> foo.dll
+gcc -L. -Wall -o test main.c -lfoo
+
+
+#Build shared lib, name it libfoo.so
+ gcc -shared -o libfoo.so foo.o
+ ## On Linux this links "-lfoo" --> libfoo.so
+ gcc -L. -Wall -o test main.c -lfoo

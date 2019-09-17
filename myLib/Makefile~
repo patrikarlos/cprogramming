@@ -1,0 +1,9 @@
+all: libMy.a
+
+
+myLib.o: myLib.c myLib.h
+	gcc -Wall -fPIC -c myLib.c
+
+libMy: myLib.o
+	ar -rc myLib.a -o myLib.o
+

@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include "myLib.h"
+
+
+
+
+void print_version(void){
+  printf("%d.%d",major_version,minor_version);
+}
+
+int addition(int a, int b){
+  return a+b;
+}
+
+int mult(int x, int y){
+  return (x*y);
+}
+  
