@@ -14,10 +14,10 @@ TARGET7=qsorter
 TARGET8=binary
 TARGET9=useStaticLib
 TARGET10=useDynamicLib
+TARGET11=llio-open
 
 
-
-all: $(TARGET) $(TARGET1) $(TARGET2) $(TARGET3)  $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10)
+all: $(TARGET) $(TARGET1) $(TARGET2) $(TARGET3)  $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10) $(TARGET11)
 
 $(TARGET): declarators.o	
 	$(CC) -o $@ $^ $(LDFLAGS)
@@ -58,6 +58,9 @@ useStaticLib.o: useStaticLib.c
 
 useDynamic.o: useStaticLib.c
 	$(CC) -o $@ $^ -c $(LDFLAGS) -ImyLib
+
+$(TARGET11): llio-open.o
+	$(CC) -o  $@ $^ $(LDFLAGS)
 
 
 %.o: %.c %.h
