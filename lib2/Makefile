@@ -13,11 +13,11 @@ dynamic: foo.o
 main.o: main.c
 	gcc -c 
 
-test-stat: foo.o main.c
+test-static: foo.o main.c
 	gcc -L. -Wall -o test-stat main.c -lfoo_static
 
 test-dynamic: foo.o main.c
-	gcc -L. -Wall -o test-stat main.c -lfoo_dynamic
+	gcc -L. -Wall -o test-dyn main.c -lfoo_dynamic
 
 clean:
-	rm *.o *.a *.so *.exe
+	rm *.o *.a *.so *.exe test-stat test-dyn
