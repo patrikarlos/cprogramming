@@ -15,9 +15,9 @@ TARGET8=binary
 TARGET9=useStaticLib
 TARGET10=useDynamicLib
 TARGET11=llio-open
+TARGET12=memTest
 
-
-all: $(TARGET) $(TARGET1) $(TARGET2) $(TARGET3)  $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10) $(TARGET11)
+all: $(TARGET) $(TARGET1) $(TARGET2) $(TARGET3)  $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10) $(TARGET11) $(TARGET12)
 
 $(TARGET): declarators.o	
 	$(CC) -o $@ $^ $(LDFLAGS)
@@ -62,6 +62,8 @@ useDynamic.o: useStaticLib.c
 $(TARGET11): llio-open.o
 	$(CC) -o  $@ $^ $(LDFLAGS)
 
+$(TARGET12): deepCsecrets_malloc.o
+	$(CC) -o  $@ $^ $(LDFLAGS)
 
 %.o: %.c %.h
 	$(CC) $(CCFLAGS) -c $<
@@ -71,3 +73,7 @@ $(TARGET11): llio-open.o
 
 clean:
 	rm -f *.o $(TARGET)
+
+init:
+	dd bs=1024 count=1024 if=/dev/urandom of=randfile
+	echo "hello world! " > foobar

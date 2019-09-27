@@ -1,3 +1,7 @@
+## Files for testing/poc/not tracked, should be built/created by "make init"
+randfile
+foobar
+
 # Prerequisites
 *.d
 
