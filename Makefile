@@ -19,8 +19,10 @@ TARGET12=memTest
 TARGET13=llio-scatter
 TARGET14=select
 TARGET15=asyncio
+TARGET16=memAllocation
+TARGET17=diyMemory
 
-all: $(TARGET) $(TARGET1) $(TARGET2) $(TARGET3)  $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10) $(TARGET11) $(TARGET12) $(TARGET13) $(TARGET14) $(TARGET15)
+all: $(TARGET) $(TARGET1) $(TARGET2) $(TARGET3)  $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10) $(TARGET11) $(TARGET12) $(TARGET13) $(TARGET14) $(TARGET15) $(TARGET16) $(TARGET17)
 
 $(TARGET): declarators.o	
 	$(CC) -o $@ $^ $(LDFLAGS)
@@ -75,7 +77,15 @@ $(TARGET14): select.o
 	$(CC) -o  $@ $^ $(LDFLAGS)
 
 $(TARGET15): asyncio.o
-	$(CC) -o  $@ $^ $(LDFLAGS) -lrt -lpthread
+	$(CC) -o $@ $^ $(LDFLAGS) -lrt -lpthread
+
+$(TARGET16): memAllocation.o
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+$(TARGET17): diyMemory.o
+	$(CC) -o $@ $^ $(LDFLAGS)
+
+
 
 %.o: %.c %.h
 	$(CC) $(CCFLAGS) -c $<
