@@ -17,8 +17,10 @@ TARGET10=useDynamicLib
 TARGET11=llio-open
 TARGET12=memTest
 TARGET13=llio-scatter
+TARGET14=select
+TARGET15=asyncio
 
-all: $(TARGET) $(TARGET1) $(TARGET2) $(TARGET3)  $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10) $(TARGET11) $(TARGET12) $(TARGET13)
+all: $(TARGET) $(TARGET1) $(TARGET2) $(TARGET3)  $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10) $(TARGET11) $(TARGET12) $(TARGET13) $(TARGET14) $(TARGET15)
 
 $(TARGET): declarators.o	
 	$(CC) -o $@ $^ $(LDFLAGS)
@@ -68,6 +70,12 @@ $(TARGET12): deepCsecrets_malloc.o
 
 $(TARGET13): llio-scatter.o
 	$(CC) -o  $@ $^ $(LDFLAGS)
+
+$(TARGET14): select.o
+	$(CC) -o  $@ $^ $(LDFLAGS)
+
+$(TARGET15): asyncio.o
+	$(CC) -o  $@ $^ $(LDFLAGS) -lrt -lpthread
 
 %.o: %.c %.h
 	$(CC) $(CCFLAGS) -c $<
