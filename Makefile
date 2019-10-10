@@ -98,7 +98,7 @@ $(TARGET19): threads_arguments.o
 $(TARGET20): threads_stacksize.o
 	$(CC) -o $@ $^ $(LDFLAGS) -lpthread
 
-$(TARGET20): threads_mutex.o
+$(TARGET21): threads_mutex.o
 	$(CC) -o $@ $^ $(LDFLAGS) -lpthread
 	
 
