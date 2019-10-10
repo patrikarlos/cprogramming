@@ -24,8 +24,9 @@ TARGET17=diyMemory
 TARGET18=threads
 TARGET19=threads_arguments
 TARGET20=threads_stacksize
+TARGET21=threads_mutex
 
-all: $(TARGET) $(TARGET1) $(TARGET2) $(TARGET3)  $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10) $(TARGET11) $(TARGET12) $(TARGET13) $(TARGET14) $(TARGET15) $(TARGET16) $(TARGET17) $(TARGET18) $(TARGET19) $(TARGET20)
+all: $(TARGET) $(TARGET1) $(TARGET2) $(TARGET3)  $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10) $(TARGET11) $(TARGET12) $(TARGET13) $(TARGET14) $(TARGET15) $(TARGET16) $(TARGET17) $(TARGET18) $(TARGET19) $(TARGET20) $(TARGET21)
 
 $(TARGET): declarators.o	
 	$(CC) -o $@ $^ $(LDFLAGS)
@@ -97,7 +98,9 @@ $(TARGET19): threads_arguments.o
 $(TARGET20): threads_stacksize.o
 	$(CC) -o $@ $^ $(LDFLAGS) -lpthread
 
-
+$(TARGET20): threads_mutex.o
+	$(CC) -o $@ $^ $(LDFLAGS) -lpthread
+	
 
 %.o: %.c %.h
 	$(CC) $(CCFLAGS) -c $<
