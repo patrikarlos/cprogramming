@@ -9,7 +9,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#define NUM_THREADS	5
+#define NUM_THREADS	50
 
 void *PrintHello(void *threadid)
 {
