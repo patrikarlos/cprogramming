@@ -10,7 +10,7 @@
 #include <pthread.h>
 #include <stdio.h>
 #include <stdlib.h>
-#define NUM_THREADS	8
+#define NUM_THREADS	16
 
 char *messages[NUM_THREADS];
 
@@ -58,7 +58,7 @@ for(t=0;t<NUM_THREADS;t++) {
   sum = sum + t;
   thread_data_array[t].thread_id = t;
   thread_data_array[t].sum = sum;
-  thread_data_array[t].message = messages[t];
+  thread_data_array[t].message = messages[t%8];
   printf("Creating thread %d\n", t);
   rc = pthread_create(&threads[t], NULL, PrintHello, (void *) 
        &thread_data_array[t]);
