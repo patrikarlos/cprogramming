@@ -66,9 +66,11 @@ int main(int arc, char **argv){
   unsigned long int allocation=0;
   
   for (int k=0;k<repeats;k++){
+    printf("%d Trying : %lu => ",k, allocationSize);
+    
     gettimeofday(&starttime,NULL);
 
-    printf("%d Trying : %lu => ",k, allocationSize);
+
     newnode=(struct Node*)calloc(1,sizeof(struct Node));
     newnode->dataPtr=(int *)calloc(allocationSize,sizeof(int));
     newnode->next=NULL;
@@ -78,6 +80,7 @@ int main(int arc, char **argv){
       allocationSize/=scaleFactor;
       printf("%d Trying : %lu => ",k, allocationSize);
       newnode->dataPtr=(int *)calloc(allocationSize,sizeof(int));
+
       if(newnode->dataPtr==NULL) {
 	printf("\n\t\tCalloc failed again, thats it I quit.\n");
 	break;
@@ -95,7 +98,7 @@ int main(int arc, char **argv){
     gettimeofday(&stoptime,NULL);
     allocation+=allocationSize*sizeof(int);
     timeval_subtract(&stdresult,&stoptime,&starttime);
-    printf(" Allocated %lu bytes, (total %lu)  in %d.%06ld \n", allocationSize*sizeof(int),allocation,(int)stdresult.tv_sec, stdresult.tv_usec);
+    printf(" Allocated %lu bytes, (total %lu MiB)  in %d.%06ld \n", allocationSize*sizeof(int),allocation/(1024*1024),(int)stdresult.tv_sec, stdresult.tv_usec);
 
     allocationSize*=scaleFactor;
   }
