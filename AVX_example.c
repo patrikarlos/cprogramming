@@ -11,7 +11,7 @@
 void add_no_AVX(long size, unsigned short *first_array, const unsigned short *second_array);
 void add_AVX(long size, unsigned short *first_array, const unsigned short *second_array);
 void add_SSE(long size, unsigned short * a, const unsigned short *b);
-void add_AVX2(long size, unsigned short * a, const unsigned short *b);
+//void add_AVX2(long size, unsigned short * a, const unsigned short *b);
 
 
 #define elements 1000
@@ -49,12 +49,6 @@ int main() {
   adiff=aetsc-astsc;
   printf("SSE : %" PRIu64 "\n",adiff);  
 
-
- 
-  
-
-  
-  
   
   return 0;
 }
@@ -111,20 +105,3 @@ void add_SSE(long size, unsigned short * a, const unsigned short *b) {
     return;
 }
 
-
-void add_AVX2(long size, unsigned short * a, const unsigned short *b) {
-    for (int i = 0; i < size; i += 32) {
-        /* load 512 bits from a */
-        /* a_part = {a[i], a[i+1], a[i+2], ..., a[i+7]} */
-        __m512i a_part = _mm512_loadu_si512((__m512*) &a[i]);
-        /* load 128 bits from b */
-        /* b_part = {b[i], b[i+1], b[i+2], ..., b[i+7]} */
-        __m512i b_part = _mm512_loadu_si512((__m512i*) &b[i]);
-        /* a_part = {a[i] + b[i], a[i+1] + b[i+1], ...,
-                     a[i+7] + b[i+7]}
-         */
-        a_part = _mm512_add_epi16(a_part, b_part);
-        _mm512_storeu_si512((__m512i*) &a[i], a_part);
-    }
-    return;
-}

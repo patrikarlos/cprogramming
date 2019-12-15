@@ -226,7 +226,26 @@ int main(int arc, char **arv){
   printf("Is bit 2 set?: %d\n", bit_test(2,theByte));
   printf("Is bit 1 set?: %d\n", bit_test(1,theByte));
   printf("Is bit 0 set?: %d\n", bit_test(0,theByte));
+
+
+  unsigned short ipfrag=0;
+  unsigned short ipflag=2;
+  unsigned short ipfrfl=0;
   
+  itoa(ipfrag,buffer3,2);
+  printf("ipfrag     = %s (%u)\n",buffer3,ipfrag);
+  itoa(ipflag,buffer2,2);
+  printf("ipflag     = %s (%u)\n",buffer2,ipflag);
+
+  ipfrfl=ipflag<<13;
+  itoa(ipfrfl,buffer2,2);
+  printf("ipfrfl (shift)    = %s (%u)\n",buffer2,ipfrfl);
+
+  ipfrfl=ipfrfl|ipfrag;
+  itoa(ipfrfl,buffer2,2);
+  printf("ipfrfl (or)       = %s (%u)\n",buffer2,ipfrfl);
   
+
+
   return 1;
 }

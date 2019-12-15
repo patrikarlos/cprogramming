@@ -5,7 +5,7 @@ BITS 64
 
 SECTION .data
 
-Hello:		db "Hello world!",10
+Hello:		db 72,"ello world!",35,10
 len_Hello:	equ $-Hello
 
 SECTION .text

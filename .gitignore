@@ -4,34 +4,28 @@ foobar
 
 # Prerequisites
 *.d
-
 # Object files
 *.o
 *.ko
 *.obj
 *.elf
-
 # Linker output
 *.ilk
 *.map
 *.exp
-
 # Precompiled Headers
 *.gch
 *.pch
-
 # Libraries
 *.lib
 *.a
 *.la
 *.lo
-
 # Shared objects (inc. Windows DLLs)
 *.dll
 *.so
 *.so.*
 *.dylib
-
 # Executables
 *.exe
 *.out
@@ -39,13 +33,11 @@ foobar
 *.i*86
 *.x86_64
 *.hex
-
 # Debug files
 *.dSYM/
 *.su
 *.idb
 *.pdb
-
 # Kernel Module Compile Results
 *.mod*
 *.cmd
@@ -54,6 +46,46 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
-
 #Temporary files
-*~
+*~junk_bugger
+*.c~
+#From git-ignore-elf
+memAllocation
+threads_mutex
+bob
+matrix1
+functionpointer
+pointer
+numbers
+signal_simplereturn
+dataTypes
+junk
+initialization
+llio-open
+memTest
+threads_scheduling
+binary
+threads_stacksize
+callsum
+threads_cv
+llio-scatter
+postfix
+hellomake/hellomake
+diyMemory
+semaphore
+helloworld
+threads_arguments
+useDynamicLib
+threads
+asyncio
+pointertopointer
+dt
+matrix2
+useStaticLib
+AVX_example
+promotion
+lib2/test-stat
+select
+memAllocation_malloc
+tha
+qsorter
