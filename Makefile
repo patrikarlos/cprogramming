@@ -25,6 +25,7 @@ TARGET18=threads
 TARGET19=threads_arguments
 TARGET20=threads_stacksize
 TARGET21=threads_mutex
+TARGET21b=threads_bad
 TARGET22=threads_cv
 TARGET23=threads_scheduling
 TARGET24=signal_simplereturn
@@ -37,7 +38,6 @@ TARGET30=triangle
 
 
 all: $(TARGET) $(TARGET1) $(TARGET2) $(TARGET3)  $(TARGET4) $(TARGET5) $(TARGET6) $(TARGET7) $(TARGET8) $(TARGET9) $(TARGET10) $(TARGET11) $(TARGET12) $(TARGET13) $(TARGET14) $(TARGET15) $(TARGET16) $(TARGET17) $(TARGET18) $(TARGET19) $(TARGET20) $(TARGET21) $(TARGET22) $(TARGET23) $(TARGET24) $(TARGET25) $(TARGET26) $(TARGET27) $(TARGET28) $(TARGET29) $(TARGET30)
-
 
 
 
@@ -112,6 +112,9 @@ $(TARGET20): threads_stacksize.o
 	$(CC) -o $@ $^ $(LDFLAGS) -lpthread
 
 $(TARGET21): threads_mutex.o
+	$(CC) -o $@ $^ $(LDFLAGS) -lpthread
+
+$(TARGET21b): threads_whyMutex.o
 	$(CC) -o $@ $^ $(LDFLAGS) -lpthread
 
 $(TARGET22): threads_cv.o

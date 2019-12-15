@@ -29,6 +29,7 @@ int main(int argc, char **argv){
 
   int anotherInt=6;
   tp=&anotherInt;
+  printf("Another int \n");
   printf("ptp pointer location-> %p ptp 2x dereferencing value-> %d \n", (void *)ptp, **ptp);
   printf(" tp pointer location-> %p tp     dereferencing value-> %d \n", (void *)tp, *tp);
   printf(" thePointer =========================================  %d \n",thePointer);
@@ -62,8 +63,11 @@ int main(int argc, char **argv){
 
   /* A bit dangerous  */
 
-  int *rougePointer=(int*)0xffffcbb0;
+  printf("Danger .\n");
+  //  int *rougePointer=(int*)0xffffcbb0;
+  int *rougePointer=(int*)&Stuff[1];
   *rougePointer=0x0;
+  printf("rougePointer = %p -> %p \n",&rougePointer, (void *)rougePointer);
 
 
   for(int i=0;i<10;i++){
