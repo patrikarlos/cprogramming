@@ -89,3 +89,13 @@ select
 memAllocation_malloc
 tha
 qsorter
+perf/unlooped
+perf/minloopcalc
+perf/loops
+perf/registerloop
+perf/pointerloop
+perf/loopcalc
+perf/derefpointerloop
+git-ignore-elf
+memAllocation.png
+gitignore-backup
