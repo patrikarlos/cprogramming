@@ -151,7 +151,6 @@ $(TARGET30): triangle.o getrandom_int.o
 %.o: %.c
 	$(CC) $(CCFLAGS) -c $<
 
-
 %.o: %.asm
 	nasm -f elf64 -F stabs $^
 
